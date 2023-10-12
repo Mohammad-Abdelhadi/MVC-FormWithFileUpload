@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Product>
+<div class="d-flex justify-content-between my-3">
+    <h1>Test Page</h1>
+    <a asp-action="Create" class="btn btn-primary w-50">Create</a>
+</div>
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(x => x.Id)</th>
+        <th>@Html.DisplayNameFor(x => x.FirstName)</th>
+        <th>@Html.DisplayNameFor(x => x.LastName)</th>
+        <th>@Html.DisplayNameFor(x => x.Age)</th>
+        <th>@Html.DisplayNameFor(x => x.country)</th>
+        <th>@Html.DisplayNameFor(x => x.Image)</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr style="text-align=center;">
+            <td>@product.Id</td>
+            <td>@product.FirstName</td>
+            <td>@product.LastName</td>
+            <td>@product.Age</td>
+            <td>@product.country</td>
+            <td>
+                <img width="100px" height="100px" style="border-radius: 50%;" src="@product.ImagePath" />
+            </td>
+
+
+       
+            <td>
+                <a asp-action="View" asp-route-id="@product.Id" class="btn btn-primary"> View</a>
+                <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning"> Edit</a>
+                <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger"> Delete</a>
+            </td>
+        </tr>
+    }
+</table>
